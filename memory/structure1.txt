@@ -1,0 +1,35 @@
+@startuml
+
+' Définition de la classe de base
+class BaseClass {
+  - privateField : int
+  + publicMethod() : void
+  # protectedMethod() : String
+}
+
+' Classe dérivée qui hérite de la classe de base
+class DerivedClass extends BaseClass {
+  + derivedMethod() : void
+}
+
+' Interface que certaines classes peuvent implémenter
+interface SomeInterface {
+  + interfaceMethod() : bool
+}
+
+' Classe qui implémente l'interface
+class ImplementingClass implements SomeInterface {
+  + interfaceMethod() : bool
+  + anotherMethod() : double
+}
+
+' Associations
+DerivedClass --> "uses" SomeInterface : << use >>
+BaseClass <.. ImplementingClass : << implement >>
+
+' Commentaires
+note right of BaseClass : BaseClass est une\nclasse de base abstraite.
+
+note left of SomeInterface : SomeInterface définit une\ninterface standard.
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+' Blocs definitions
+class Block1 {
+   + Property1 : Type1
+   + Property2 : Type2
+}
+
+class Block2 {
+   + PropertyA : TypeA
+   + PropertyB : TypeB
+}
+
+class Block3 {
+   + PropertyX : TypeX
+}
+
+' Relations
+Block1 --|> Block2 : Inheritance
+Block1 "1" *-- "0..*" Block3 : Composition
+Block2 <.. Block3 : Association
+
+' Notes
+note right of Block1 : This is a\nnote for Block1
+note left of Block3 : Block3 can be\nassociated with Block2
+
+@enduml

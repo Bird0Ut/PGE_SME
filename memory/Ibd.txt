@@ -1,0 +1,36 @@
+@startuml
+' Définir un style pour la note
+skinparam NoteBackgroundColor palegreen
+skinparam NoteBorderColor green
+
+' Début de définition d'un bloc (Container)
+class Container {
+}
+
+' Définition de blocs internes
+class ComponentA {
+}
+
+class ComponentB {
+}
+
+class ComponentC {
+}
+
+' Placement des blocs internes dans le bloc Container
+Container : - ComponentA
+Container : - ComponentB
+Container : - ComponentC
+
+' Créer des liens entre les blocs internes
+ComponentA "1" -- "many" ComponentB : interfaceAtoB
+ComponentB -- ComponentC : interfaceBtoC
+
+' Ajouter des notes
+note right of ComponentA : Ceci est le composant A
+note left of ComponentC : Ceci est le composant C
+
+' Afficher les notes des interfaces
+note on link : Signal ou \n données transmises \n ici
+
+@enduml

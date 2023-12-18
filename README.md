@@ -1,6 +1,6 @@
 # Guide d'installation et d'utilisation du projet
 
-Ce document explique les étapes nécessaires pour installer les bibliothèques **PlantUML** et **Six**. De plus, il fournit des instructions pour exécuter le projet qui nécessite la version **Python 3.11** ainsi que des fichiers `.txt` dans le dossier `memory`.
+Ce document explique les étapes nécessaires pour installer les bibliothèques **PlantUML** et **Six**. De plus, il fournit des instructions pour exécuter le projet qui nécessite la version **Python 3.11** ainsi que des fichiers `.txt` dans le dossier `memory` ou `pilote`.
 
 ## Installation des bibliothèques
 
@@ -22,7 +22,7 @@ pip3 install six
 
 1. Assurez-vous d'avoir installé Python 3.11 sur votre machine.
 
-2. Placez les fichiers `.txt` requis dans le dossier `memory`.
+2. Placez les fichiers `.txt` requis dans le dossier `memory` ou `pilote`.
 
 3. Exécutez le script principal en utilisant la commande suivante:
 

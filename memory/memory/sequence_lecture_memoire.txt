@@ -1,0 +1,26 @@
+@startuml
+
+' Définition des participants
+participant "système non défini" as system_non_def
+participant "Pilote de Mémoire" as MemoryDriver
+participant "Système de Gestion de Mémoire" as mem
+
+' Début de la séquence de lecture de mémoire
+system_non_def -> MemoryDriver : Demande de lecture (memoire pointée, adresse)
+' Activation du pilote de mémoire pour montrer qu'il traite la demande
+activate MemoryDriver
+
+MemoryDriver -> mem : Commande de lecture (adresse)
+' Activation du système de gestion de mémoire
+activate mem
+
+mem --> MemoryDriver : Retourne la valeur lue
+' Désactivation du système de gestion de mémoire
+deactivate mem
+
+MemoryDriver --> system_non_def : Transmet la valeur
+' Désactivation du pilote de mémoire
+deactivate MemoryDriver
+
+' Fin du diagramme de séquence
+@enduml

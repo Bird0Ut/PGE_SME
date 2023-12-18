@@ -1,19 +1,40 @@
 @startuml
-skinparam rectangle {
-    StereotypeFontSize 10
-    FontSize 14
-    BackgroundColor<<requirement>> Wheat
-    BorderColor<<requirement>> Brown
+skinparam package {
+    BackgroundColor White
+    BorderColor Black
 }
 
-package "Mémoire" {
-    rectangle "PGE_REQ_MEM_02_02_01-1\nLa mémoire de simulateur doit reproduire le comportement d'une mémoire de microcontrôleur, en tenant compte de ses caractéristiques et limitations." as REQ1 <<requirement>>
-    rectangle "PGE_REQ_MEM_02_02_02-1\nLa mémoire de simulateur doit permettre la lecture, l'écriture et l'effacement de données dans la mémoire simulée." as REQ2 <<requirement>>
-    rectangle "PGE_REQ_MEM_02_02_03-1\nLa mémoire de simulateur doit être déployable sur l'environnement Windows, assurant ainsi une portabilité pour les développeurs." as REQ3 <<requirement>>
-    rectangle "PGE_REQ_MEM_02_02_04-2\nLa mémoire du simulateur doit communiquer avec les pilotes mémoires en utilisant un bus de communication." as REQ4 <<requirement>>
-    rectangle "PGE_REQ_MEM_02_02_05-2\nLa mémoire de simulateur doit avoir la capacité de sauvegarder l'état actuel de la simulation, incluant les positions, les paramètres, les variables et autres données pertinentes qui décrivent la configuration du système simulé à un moment donné." as REQ5 <<requirement>>
-    rectangle "PGE_REQ_MEM_02_02_06-2\nLa mémoire de simulateur doit être en mesure de conserver l'historique des données de simulation." as REQ6 <<requirement>>
-    rectangle "PGE_REQ_MEM_02_02_07-2\nLa mémoire de simulateur doit contribuer au processus de débogage en enregistrant des informations sur les erreurs survenues pendant la simulation, assurant ainsi une gestion efficace des erreurs." as REQ7 <<requirement>>
+skinparam rectangle {
+    StereotypeFontSize 10
+    FontSize 12
+    BackgroundColor<<requirement>> Wheat
+    BorderColor<<requirement>> Brown
+    Shadowing false
 }
+
+title Exigences du simulateur de mémoire
+
+package "Exigences de la Mémoire Simulée" {
+    rectangle "PGE_REQ_MEM_02_02_01-1\nComportement similaire\nà un microcontrôleur" as REQ1 <<requirement>>
+    rectangle "PGE_REQ_MEM_02_02_02-1\nSupporte lecture,\nécriture et effacement" as REQ2 <<requirement>>
+    rectangle "PGE_REQ_MEM_02_02_03-1\nDéployable sur\nWindows" as REQ3 <<requirement>>
+}
+
+package "Communication et Données" {
+    rectangle "PGE_REQ_MEM_02_02_04-2\nCommunique via un\nbus de communication" as REQ4 <<requirement>>
+    rectangle "PGE_REQ_MEM_02_02_05-2\nSauvegarde de l'état de\nla simulation" as REQ5 <<requirement>>
+    rectangle "PGE_REQ_MEM_02_02_06-2\nConservation de l'historique\nde simulation" as REQ6 <<requirement>>
+}
+
+package "Débogage" {
+    rectangle "PGE_REQ_MEM_02_02_07-2\nSupporte l'enregistrement\nd'erreurs pour débogage" as REQ7 <<requirement>>
+}
+
+REQ2 -[hidden]d-> REQ3
+REQ5 -[hidden]d-> REQ6
+
+note right of REQ1 : Les limitations du\nmicrocontrôleur doivent\nêtre clairement définies
+note right of REQ4 : Doit spécifier le\ntype de bus et le\nprotocole utilisé
+note right of REQ7 : Le format et le niveau\nde détail des logs\ndoivent être spécifiés
 
 @enduml

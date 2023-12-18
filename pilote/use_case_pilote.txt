@@ -5,7 +5,7 @@ skinparam rectangle {
 }
 
 skinparam package {
-    BackgroundColor LightCyan
+    BackgroundColor LightBlue
 }
 
 skinparam usecase {

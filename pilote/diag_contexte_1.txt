@@ -1,0 +1,36 @@
+@startuml
+
+' Définition du style
+skinparam rectangle {
+    StyleNameBackgroundColor LightBlue
+    BorderColor Black
+    ArrowColor Black
+}
+
+' Création du bloc du système
+rectangle SystemBlock {
+    ' Contenu interne du bloc système ici
+}
+
+' Définition des éléments externes
+rectangle ExternalElement1 {
+    ' Contenu de l'élément externe 1
+}
+rectangle ExternalElement2 {
+    ' Contenu de l'élément externe 2
+}
+' ...
+
+' Définition des relations
+ExternalElement1 -right-> SystemBlock : Input1
+SystemBlock -left-> ExternalElement1 : Output1
+
+ExternalElement2 -up-> SystemBlock : Input2
+SystemBlock -down-> ExternalElement2 : Output2
+
+' Ajout de notes si nécessaire
+note right of SystemBlock : Ceci est le bloc \n principal du système.
+note left of ExternalElement1 : Ceci est un \n élément externe au système.
+
+' Fin du diagramme
+@enduml

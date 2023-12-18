@@ -31,7 +31,7 @@ rectangle "Bootloader" as Bootloader <<external>> {
 ' Définition des relations
 MemoryDriver -right-> System : commande \n lecture/écriture
 System -left-> MemoryDriver : statut \n valeur lue/control
-Bootloader -up-> System : mise à jour \n du firmware
+Bootloader -up-> MemoryDriver : mise à jour \n du firmware
 
 ' Ajout de notes si nécessaire
 note right of System : Ceci est le bloc \n principal du système

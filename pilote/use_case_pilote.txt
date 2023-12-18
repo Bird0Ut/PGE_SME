@@ -1,0 +1,53 @@
+@startuml
+' Définition du style et des couleurs
+skinparam rectangle {
+    BackgroundColor<<Block>> Wheat
+}
+
+skinparam package {
+    BackgroundColor LightCyan
+}
+
+skinparam usecase {
+    BackgroundColor LightWheat
+    BorderColor DarkSlateGray
+}
+'skinparam packageStyle rectangle
+skinparam defaultTextAlignment center
+
+' Actors
+actor Utilisateur as user
+
+' Blocks
+package "Pilote Mémoire" as PilotMemory {
+    usecase (Configuration) as UC1
+    usecase (Opération sur les données) as UC2
+    usecase (implémenter des mécanismes pour gérer les erreurs) as UC3
+    usecase (conserver les données critiques en cas d'échec) as UC4
+    usecase (lire les données) as UC5
+    usecase (écrire des données) as UC6
+}
+
+rectangle "Bootloader" as Bootloader <<Block>> {
+    note right of Bootloader : Contenu du Bootloader
+}
+
+rectangle "Mémoire" as memoire <<Block>> {
+    note right of memoire : Contenu de la Mémoire
+}
+
+' Relations
+user -left- UC1
+user -left- UC2
+
+Bootloader -- UC2
+memoire -- UC1
+memoire -- UC2
+
+UC1 ..> UC3 : <<include>>
+UC1 ..> UC4 : <<include>>
+
+UC2 ..> UC5 : <<include>>
+UC2 ..> UC6 : <<include>>
+
+@enduml

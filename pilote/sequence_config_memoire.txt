@@ -7,23 +7,20 @@ participant "Memoire" as mem
 
 ' Début du diagramme de séquence global
 com -> MemoryDriver : demande d'initialisation
+
 ' Activation du pilote de mémoire pour montrer qu'il traite la demande
+MemoryDriver -> MemoryDriver : PilMem_InitMem(*fichier_config)
+activate MemoryDriver
 
 alt Configuration conforme
-    MemoryDriver -> MemoryDriver : PilMem_InitMem(*fichier_config)
-    activate MemoryDriver
     MemoryDriver -> mem : cree memoire(s)
     activate mem
     mem --> MemoryDriver : retour configuration conforme
     deactivate mem
     MemoryDriver --> com : Confirmation init
-    deactivate MemoryDriver
 else Configuration non conforme
-    MemoryDriver -> MemoryDriver : PilMem_InitMem(*fichier_config)
-    activate MemoryDriver
     MemoryDriver --> com : Retour erreur initialisation
-    deactivate MemoryDriver
 end
-
+deactivate MemoryDriver
 ' Fin du diagramme de séquence global
 @enduml

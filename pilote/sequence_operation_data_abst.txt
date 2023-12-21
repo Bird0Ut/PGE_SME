@@ -1,0 +1,21 @@
+@startuml
+
+' Définition des participants
+participant "Com" as com
+participant "Pilote Memoire" as MemoryDriver
+participant "Memoire" as mem
+
+' Début du diagramme de séquence global
+com -> MemoryDriver : demande d'opération
+' Activation du pilote de mémoire pour montrer qu'il traite la demande
+
+alt Lecture
+    == Lecture Memoire ==
+else Ecriture
+    == Ecriture Memoire ==
+else Effacement
+    == Effacer Memoire ==
+end
+
+' Fin du diagramme de séquence global
+@enduml

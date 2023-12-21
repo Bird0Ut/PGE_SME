@@ -1,0 +1,29 @@
+@startuml
+
+' Définition des participants
+participant "Com" as com
+participant "Pilote de Mémoire" as MemoryDriver
+participant "Système de Gestion de Mémoire" as mem
+
+' Début de la séquence de lecture de mémoire
+com -> MemoryDriver : demande de lecture
+' Activation du pilote de mémoire pour montrer qu'il traite la demande
+
+MemoryDriver -> MemoryDriver : PilMem_LectureMemoire(*Memoire, adresse)
+' Activation du système MemoryDriver
+activate MemoryDriver
+
+MemoryDriver -> mem : lecture memoire
+' Activation du système Mémoire
+activate mem
+
+mem --> MemoryDriver : Retour valeur lue
+' Désactivation du système de gestion de mémoire
+deactivate mem
+
+MemoryDriver --> com : Transmet la valeur
+' Désactivation du pilote de mémoire
+deactivate MemoryDriver
+
+' Fin du diagramme de séquence
+@enduml

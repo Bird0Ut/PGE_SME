@@ -1,0 +1,29 @@
+@startuml
+
+' Définition des participants
+participant "Com" as com
+participant "Pilote Memoire" as MemoryDriver
+participant "Memoire" as mem
+
+' Début de la séquence d'effacement de mémoire
+com -> MemoryDriver : demande d'effacement
+' Activation du pilote de mémoire pour montrer qu'il traite la demande
+
+MemoryDriver -> MemoryDriver : PilMem_EffacementMemoire(*Memoire, adresse_debut, adresse_fin)
+' Activation du système MemoryDriver
+activate MemoryDriver
+
+MemoryDriver -> mem : effacement en mémoire
+' Activation du système Mémoire
+activate mem
+
+mem --> MemoryDriver : Confirmation d'effacement
+' Désactivation du système de gestion de mémoire
+deactivate mem
+
+MemoryDriver --> com : Transmet la confirmation
+' Désactivation du pilote de mémoire
+deactivate MemoryDriver
+
+' Fin du diagramme de séquence
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+
+' Définition des participants
+participant "Com" as com
+participant "Pilote Memoire" as MemoryDriver
+participant "Memoire" as mem
+
+' Début du diagramme de séquence global
+com -> MemoryDriver : demande d'opération
+' Activation du pilote de mémoire pour montrer qu'il traite la demande
+
+alt Lecture
+    MemoryDriver -> MemoryDriver : PilMem_LectureMemoire(*Memoire, adresse)
+    activate MemoryDriver
+    MemoryDriver -> mem : lecture en mémoire
+    activate mem
+    mem --> MemoryDriver : Valeur lue
+    deactivate mem
+    MemoryDriver --> com : Transmet la valeur lue
+    deactivate MemoryDriver
+else Ecriture
+    MemoryDriver -> MemoryDriver : PilMem_EcritureMemoire(*Memoire, adresse, valeur)
+    activate MemoryDriver
+    MemoryDriver -> mem : écriture en mémoire
+    activate mem
+    mem --> MemoryDriver : Confirmation d'écriture
+    deactivate mem
+    MemoryDriver --> com : Transmet la confirmation
+    deactivate MemoryDriver
+else Effacement
+    MemoryDriver -> MemoryDriver : PilMem_EffacementMemoire(*Memoire, adresse_debut, adresse_fin)
+    activate MemoryDriver
+    MemoryDriver -> mem : effacement de mémoire
+    activate mem
+    mem --> MemoryDriver : Confirmation d'effacement
+    deactivate mem
+    MemoryDriver --> com : Transmet la confirmation
+    deactivate MemoryDriver
+end
+
+' Fin du diagramme de séquence global
+@enduml

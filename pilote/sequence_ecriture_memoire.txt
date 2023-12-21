@@ -5,23 +5,23 @@ participant "Com" as com
 participant "Pilote Memoire" as MemoryDriver
 participant "Memoire" as mem
 
-' Début de la séquence de lecture de mémoire
-com -> MemoryDriver : demande de lecture
+' Début de la séquence d'écriture de mémoire
+com -> MemoryDriver : demande d'écriture
 ' Activation du pilote de mémoire pour montrer qu'il traite la demande
 
-MemoryDriver -> MemoryDriver : PilMem_LectureMemoire(*Memoire, adresse)
+MemoryDriver -> MemoryDriver : PilMem_EcritureMemoire(*Memoire, adresse, valeur)
 ' Activation du système MemoryDriver
 activate MemoryDriver
 
-MemoryDriver -> mem : lecture memoire
+MemoryDriver -> mem : écriture en mémoire
 ' Activation du système Mémoire
 activate mem
 
-mem --> MemoryDriver : Retour valeur lue
+mem --> MemoryDriver : Confirmation d'écriture
 ' Désactivation du système de gestion de mémoire
 deactivate mem
 
-MemoryDriver --> com : Transmet la valeur
+MemoryDriver --> com : Transmet la confirmation
 ' Désactivation du pilote de mémoire
 deactivate MemoryDriver
 

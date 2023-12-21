@@ -10,7 +10,7 @@ com -> MemoryDriver : demande d'initialisation
 ' Activation du pilote de mémoire pour montrer qu'il traite la demande
 
 alt Configuration conforme
-    MemoryDriver -> MemoryDriver : PilMem_InitMem(*configuration)
+    MemoryDriver -> MemoryDriver : PilMem_InitMem(*fichier_config)
     activate MemoryDriver
     MemoryDriver -> mem : cree memoire(s)
     activate mem
@@ -19,7 +19,7 @@ alt Configuration conforme
     MemoryDriver --> com : Confirmation init
     deactivate MemoryDriver
 else Configuration non conforme
-    MemoryDriver -> MemoryDriver : PilMem_InitMem(*configuration)
+    MemoryDriver -> MemoryDriver : PilMem_InitMem(*fichier_config)
     activate MemoryDriver
     MemoryDriver --> com : Retour erreur initialisation
     deactivate MemoryDriver
